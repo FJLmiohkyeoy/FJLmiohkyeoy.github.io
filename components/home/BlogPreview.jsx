@@ -5,6 +5,9 @@ const Container = styled.div`
   padding-top: 5rem;
   margin-bottom: 10rem;
   width: 70rem;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const Title = styled.div`
@@ -17,6 +20,11 @@ const Title = styled.div`
 const BlogPostContainer = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const BlogPreview = () => {
   return (

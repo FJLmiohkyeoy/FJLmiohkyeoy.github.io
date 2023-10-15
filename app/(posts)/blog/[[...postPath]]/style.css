@@ -1,0 +1,6 @@
+@media (max-width:500px){
+    .blog-main{
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+}

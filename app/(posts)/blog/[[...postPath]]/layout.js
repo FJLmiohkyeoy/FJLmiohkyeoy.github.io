@@ -1,5 +1,6 @@
 import LeftSidebar from "@/components/shared/LeftSidebar";
 import { BLOG_POSTS_DIR } from "@/components/posts/config";
+import RightSideBar from "@/components/shared/RightSideBar";
 
 export const metadata = {
   title: "Create Next App",
@@ -7,7 +8,7 @@ export const metadata = {
 };
 
 const blogContainerStyle = {
-  boxSizing:"Border-box",
+  boxSizing:"border-box",
   width:"40%",
   minWidth:"50rem",
 };
@@ -15,6 +16,7 @@ const blogContainerStyle = {
 export default function BlogLayout({ children }) {
   return <>
     <LeftSidebar postsDir={BLOG_POSTS_DIR} />
-    <div style={blogContainerStyle}>{children}</div>;
+    <div className="blog-main" style={blogContainerStyle}>{children}</div>
+    <RightSideBar />
   </>
 }

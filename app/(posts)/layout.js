@@ -1,3 +1,5 @@
+import "./style.css";
+
 export const metadata = {
     title: "My Blog",
     description: "my blog",
@@ -10,7 +12,7 @@ const postsContainerStyle = {
 };
 export default function PostsLayout({children}){
     return(
-        <main style={postsContainerStyle}>
+        <main className="post-layout" style={postsContainerStyle}>
                 {children}
         </main>
     )

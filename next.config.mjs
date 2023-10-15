@@ -13,7 +13,7 @@ const nextConfig = {
         mdxRs: true,
     },
     reactStrictMode: false,
-    output:"export",
+    // output:"export",
 };
 
 const withMDX = createMDX({

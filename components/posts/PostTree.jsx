@@ -15,14 +15,16 @@ import Title, { TitleButton, TitleLink, TitleVerticalBar } from "./Title";
 import { BLOG_POSTS_DIR } from "./config";
 import MainCategory from "./MainCategory";
 import Post from "./post";
+// import { useRef } from "react";
 
 const Container = styled.div`
-  /* position: relative; */
-  & > div {
-    position: absolute;
-    width: 15rem;
-    top: 10rem;
-    right: 3rem;
+  position: sticky;
+  width: 18rem;
+  top: 9rem;
+  right: 0;
+  overflow: hidden;
+  @media screen and (max-width: 500px) {
+    display: none;
   }
 `;
 
@@ -59,10 +61,35 @@ const LinkTree = ({ tree }) => {
   }
 };
 
+const Button = styled.button`
+  width: 100%;
+  background-color: white;
+  border-top: 1 solid black;
+  border: 0;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 1rem;
+  margin-top: 2rem;
+`;
+
+const DropDownButton = ({ targetRef }) => {
+  const handleClick = () => {
+    console.log(targetRef);
+    if (targetRef.current.style.display === "block") {
+      targetRef.current.style.display = "none";
+    } else {
+      targetRef.current.style.display = "block";
+    }
+  };
+  return <Button onClick={handleClick}>Menu</Button>;
+};
+
 const BptContext = createContext();
 export const useBptContext = () => useContext(BptContext);
 
 const PostTree = ({ tree }) => {
+  const ref = useRef(null);
   const [selected, setSelected] = useState(null);
   const handleSelect = ({ target }) => {
     if (selected !== null && selected !== target) {
@@ -79,10 +106,9 @@ const PostTree = ({ tree }) => {
   }, [selected]);
   return (
     <BptContext.Provider value={handleSelect}>
-      <Container>
-        <div>
-          <LinkTree tree={tree} />
-        </div>
+      <DropDownButton targetRef={ref} />
+      <Container ref={ref}>
+        <LinkTree tree={tree} />
       </Container>
     </BptContext.Provider>
   );

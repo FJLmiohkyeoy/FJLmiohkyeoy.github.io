@@ -2,20 +2,19 @@ import PostTree from "@/server/components/PostTree";
 
 const containerStyle = {
   display: "flex",
-  flexDirection: "cloumn",
+  flexDirection: "column",
   left: "0",
   top: "3rem",
   width: "30%",
   minWidth: "20rem",
-  height: "100vh",
+  height: "100%",
   alignItems: "flex-end",
   paddingRight: "1rem",
-  position: "relative",
 };
 
 const LeftSidebar = ({ postsDir }) => {
   return (
-    <div style={containerStyle}>
+    <div className="left-sidebar" style={containerStyle}>
       <PostTree postsDir={postsDir} />
     </div>
   );

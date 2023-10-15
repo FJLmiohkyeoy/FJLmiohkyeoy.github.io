@@ -1,6 +1,7 @@
 import { BLOG_POSTS_DIR } from "@/components/posts/config";
 import MdxViewer from "@/components/mdxViewer";
 import { makeFileBasedDynamicPath } from "@/utils/makeFileBasedPostTree";
+import "./style.css"
 
 const containerStyle = {
   width: "100%",
@@ -29,9 +30,12 @@ export default function Page({ params: { postPath } }) {
 export async function generateStaticParams() {
   const postTree = makeFileBasedDynamicPath(BLOG_POSTS_DIR);
   const dynamicPath = [
-    ...postTree.map((post) => ({
-      postPath: `${post.slice(BLOG_POSTS_DIR.length)}`.split("/").splice(1),
-    })),
+    ...postTree.map((post) => {
+      const path = `${post.slice(BLOG_POSTS_DIR.length)}`;
+      return{
+      postPath: path.substring(0, path.indexOf(".")).split("/").splice(1),
+    };
+  }),
     { postPath: [] },
   ];
   return dynamicPath;

@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import ProjectPostBox from "./ProjectPostBox";
+import BlogPostCard from "./BlogPostCard";
 
 const Container = styled.div`
   margin-top: 5rem;
@@ -14,11 +15,26 @@ const Title = styled.div`
   text-align: center;
 `;
 
+const ProjectPostContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
 const ProjectPreview = () => {
   return (
     <Container>
       <Title>Project</Title>
-      <ProjectPostBox></ProjectPostBox>
+      <ProjectPostContainer>
+        <BlogPostCard />
+        <BlogPostCard />
+        <BlogPostCard />
+      </ProjectPostContainer>
     </Container>
   );
 };
